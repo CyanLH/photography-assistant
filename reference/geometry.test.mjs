@@ -1,0 +1,30 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { normalize360, signedAngularDelta, angularDistance, turnInstruction,
+  fieldOfViewDeg, equivalentFocalLengthMm, candidateBearings, feasibleAperture,
+  centeredObjectFrameWidthFraction } from './geometry.mjs';
+const near = (actual, expected, tolerance = 1e-6) => assert.ok(Math.abs(actual - expected) < tolerance, `${actual} vs ${expected}`);
+test('wrap negative azimuth', () => assert.equal(normalize360(-90), 270));
+test('wrap 360 to zero', () => assert.equal(normalize360(360), 0));
+test('wrap several revolutions', () => assert.equal(normalize360(1081), 1));
+test('reject non-finite azimuth', () => assert.throws(() => normalize360(Infinity), TypeError));
+test('359 to 1 is right 2', () => assert.equal(signedAngularDelta(1, 359), 2));
+test('1 to 359 is left 2', () => assert.equal(signedAngularDelta(359, 1), -2));
+test('distance is symmetric', () => assert.equal(angularDistance(355, 10), angularDistance(10, 355)));
+test('right turn instruction', () => assert.deepEqual(turnInstruction(1, 359, 0), {direction: 'right', degrees: 2}));
+test('left turn instruction', () => assert.deepEqual(turnInstruction(359, 1, 0), {direction: 'left', degrees: 2}));
+test('opposite direction is explicit', () => assert.deepEqual(turnInstruction(180, 0), {direction: 'opposite', degrees: 180}));
+test('tolerance is an explicit product setting', () => assert.equal(turnInstruction(3, 0, 3).direction, 'aligned'));
+test('invalid tolerance rejected', () => assert.throws(() => turnInstruction(0, 0, -1), RangeError));
+test('west sun gives east front light', () => assert.deepEqual(candidateBearings(270, 123), {backlight:270,frontlight:90,sidelight:[0,180],moon:123}));
+test('FF 35mm horizontal FOV', () => near(fieldOfViewDeg(36,24,35),54.4322231146,1e-8));
+test('FF 200mm horizontal FOV', () => near(fieldOfViewDeg(36,24,200),10.2855291158,1e-8));
+test('portrait FOV is narrower', () => assert.ok(fieldOfViewDeg(36,24,35,'portrait') < fieldOfViewDeg(36,24,35)));
+test('crop sensor FOV is narrower', () => assert.ok(fieldOfViewDeg(23.5,15.6,35) < fieldOfViewDeg(36,24,35)));
+test('zero focal length rejected', () => assert.throws(() => fieldOfViewDeg(36,24,0), RangeError));
+test('non-finite sensor rejected', () => assert.throws(() => fieldOfViewDeg(NaN,24,35), TypeError));
+test('unknown orientation rejected', () => assert.throws(() => fieldOfViewDeg(36,24,35,'diagonal'), RangeError));
+test('full frame equivalent focal length unchanged', () => assert.equal(equivalentFocalLengthMm(36,24,35),35));
+test('F4 lens cannot be set to F1.8', () => assert.equal(feasibleAperture(1.8,4),4));
+test('narrower aperture remains feasible', () => assert.equal(feasibleAperture(8,2.8),8));
+test('0.5-degree Moon at FF 200mm is about five percent of width', () => near(centeredObjectFrameWidthFraction(0.5,36,200),0.04848,0.00001));

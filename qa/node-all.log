@@ -1,0 +1,202 @@
+TAP version 13
+# Subtest: valid azimuth and altitude geometry
+ok 1 - valid azimuth and altitude geometry
+  ---
+  duration_ms: 1.035756
+  type: 'test'
+  ...
+# Subtest: astronomy changes with both time and coordinates
+ok 2 - astronomy changes with both time and coordinates
+  ---
+  duration_ms: 0.149671
+  type: 'test'
+  ...
+# Subtest: moon phase fraction, visibility and disk shape
+ok 3 - moon phase fraction, visibility and disk shape
+  ---
+  duration_ms: 0.571271
+  type: 'test'
+  ...
+# Subtest: Seoul solar windows on selected date: calculated not fixed fixtures
+ok 4 - Seoul solar windows on selected date: calculated not fixed fixtures
+  ---
+  duration_ms: 4.637453
+  type: 'test'
+  ...
+# Subtest: Latitude and season change golden hour and daylight
+ok 5 - Latitude and season change golden hour and daylight
+  ---
+  duration_ms: 5.568055
+  type: 'test'
+  ...
+# Subtest: polar daylight handles missing transitions without fake golden times
+ok 6 - polar daylight handles missing transitions without fake golden times
+  ---
+  duration_ms: 1.529744
+  type: 'test'
+  ...
+# Subtest: DST dates do not throw or incorrectly force 24h epoch
+ok 7 - DST dates do not throw or incorrectly force 24h epoch
+  ---
+  duration_ms: 1.109164
+  type: 'test'
+  ...
+# Subtest: invalid coordinates are rejected
+ok 8 - invalid coordinates are rejected
+  ---
+  duration_ms: 0.314564
+  type: 'test'
+  ...
+# Subtest: wrap negative azimuth
+ok 9 - wrap negative azimuth
+  ---
+  duration_ms: 0.883381
+  type: 'test'
+  ...
+# Subtest: wrap 360 to zero
+ok 10 - wrap 360 to zero
+  ---
+  duration_ms: 0.144443
+  type: 'test'
+  ...
+# Subtest: wrap several revolutions
+ok 11 - wrap several revolutions
+  ---
+  duration_ms: 0.133707
+  type: 'test'
+  ...
+# Subtest: reject non-finite azimuth
+ok 12 - reject non-finite azimuth
+  ---
+  duration_ms: 0.294374
+  type: 'test'
+  ...
+# Subtest: 359 to 1 is right 2
+ok 13 - 359 to 1 is right 2
+  ---
+  duration_ms: 0.105145
+  type: 'test'
+  ...
+# Subtest: 1 to 359 is left 2
+ok 14 - 1 to 359 is left 2
+  ---
+  duration_ms: 0.09558
+  type: 'test'
+  ...
+# Subtest: distance is symmetric
+ok 15 - distance is symmetric
+  ---
+  duration_ms: 0.084244
+  type: 'test'
+  ...
+# Subtest: right turn instruction
+ok 16 - right turn instruction
+  ---
+  duration_ms: 0.565113
+  type: 'test'
+  ...
+# Subtest: left turn instruction
+ok 17 - left turn instruction
+  ---
+  duration_ms: 0.347111
+  type: 'test'
+  ...
+# Subtest: opposite direction is explicit
+ok 18 - opposite direction is explicit
+  ---
+  duration_ms: 0.3396
+  type: 'test'
+  ...
+# Subtest: tolerance is an explicit product setting
+ok 19 - tolerance is an explicit product setting
+  ---
+  duration_ms: 0.168338
+  type: 'test'
+  ...
+# Subtest: invalid tolerance rejected
+ok 20 - invalid tolerance rejected
+  ---
+  duration_ms: 0.094859
+  type: 'test'
+  ...
+# Subtest: west sun gives east front light
+ok 21 - west sun gives east front light
+  ---
+  duration_ms: 0.10889
+  type: 'test'
+  ...
+# Subtest: FF 35mm horizontal FOV
+ok 22 - FF 35mm horizontal FOV
+  ---
+  duration_ms: 0.327253
+  type: 'test'
+  ...
+# Subtest: FF 200mm horizontal FOV
+ok 23 - FF 200mm horizontal FOV
+  ---
+  duration_ms: 0.214396
+  type: 'test'
+  ...
+# Subtest: portrait FOV is narrower
+ok 24 - portrait FOV is narrower
+  ---
+  duration_ms: 0.102632
+  type: 'test'
+  ...
+# Subtest: crop sensor FOV is narrower
+ok 25 - crop sensor FOV is narrower
+  ---
+  duration_ms: 0.099737
+  type: 'test'
+  ...
+# Subtest: zero focal length rejected
+ok 26 - zero focal length rejected
+  ---
+  duration_ms: 0.085847
+  type: 'test'
+  ...
+# Subtest: non-finite sensor rejected
+ok 27 - non-finite sensor rejected
+  ---
+  duration_ms: 0.703827
+  type: 'test'
+  ...
+# Subtest: unknown orientation rejected
+ok 28 - unknown orientation rejected
+  ---
+  duration_ms: 0.089863
+  type: 'test'
+  ...
+# Subtest: full frame equivalent focal length unchanged
+ok 29 - full frame equivalent focal length unchanged
+  ---
+  duration_ms: 0.068541
+  type: 'test'
+  ...
+# Subtest: F4 lens cannot be set to F1.8
+ok 30 - F4 lens cannot be set to F1.8
+  ---
+  duration_ms: 0.067139
+  type: 'test'
+  ...
+# Subtest: narrower aperture remains feasible
+ok 31 - narrower aperture remains feasible
+  ---
+  duration_ms: 0.079417
+  type: 'test'
+  ...
+# Subtest: 0.5-degree Moon at FF 200mm is about five percent of width
+ok 32 - 0.5-degree Moon at FF 200mm is about five percent of width
+  ---
+  duration_ms: 0.089151
+  type: 'test'
+  ...
+1..32
+# tests 32
+# suites 0
+# pass 32
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 76.643876

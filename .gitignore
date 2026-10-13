@@ -1,0 +1,13 @@
+node_modules/
+dist/
+qa/current/
+.next/
+*.tsbuildinfo
+.env*
+!.env.example
+
+.next-maps/
+
+# Local editor and OS metadata
+.DS_Store
+.idea/

@@ -1,0 +1,43 @@
+{
+  "name": "Photography Assistant",
+  "color": {
+    "background": "#F5F4EF",
+    "surface": "#FFFEFA",
+    "text": "#23362F",
+    "muted": "#6B756C",
+    "border": "#DCE0D6",
+    "primary": "#203D32",
+    "instrument": "#20372E",
+    "sun": "#EDBD64",
+    "sunText": "#916119",
+    "moon": "#B9BBEC",
+    "cameraDirection": "#A8D8C0"
+  },
+  "radius": {
+    "control": 12,
+    "card": 18,
+    "instrument": 22
+  },
+  "spacing": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24,
+    32,
+    40,
+    48
+  ],
+  "breakpoints": {
+    "mobile": 390,
+    "tablet": 768,
+    "desktop": 1280
+  },
+  "touchTargetMin": 44,
+  "bodyFontMinProduction": 16,
+  "font": {
+    "sans": "system-ui, -apple-system, Noto Sans CJK KR, Malgun Gothic, sans-serif",
+    "numeric": "SFMono-Regular, Consolas, monospace"
+  }
+}

@@ -1,0 +1,206 @@
+{
+  "passed": 40,
+  "total": 40,
+  "results": [
+    {
+      "name": "1440 startup no JS errors",
+      "pass": true,
+      "details": "[]"
+    },
+    {
+      "name": "1440 sun/moon calculated",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "1440 no horizontal overflow",
+      "pass": true,
+      "details": "[1440, 1440]"
+    },
+    {
+      "name": "1440 4 page views",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "1440 old visible logo removed",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "1440 navigate map",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "1440 navigate planner",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "1440 navigate gear",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "768 startup no JS errors",
+      "pass": true,
+      "details": "[]"
+    },
+    {
+      "name": "768 sun/moon calculated",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "768 no horizontal overflow",
+      "pass": true,
+      "details": "[768, 768]"
+    },
+    {
+      "name": "768 4 page views",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "768 old visible logo removed",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "768 navigate map",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "768 navigate planner",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "768 navigate gear",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "390 startup no JS errors",
+      "pass": true,
+      "details": "[]"
+    },
+    {
+      "name": "390 sun/moon calculated",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "390 no horizontal overflow",
+      "pass": true,
+      "details": "[390, 390]"
+    },
+    {
+      "name": "390 4 page views",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "390 old visible logo removed",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "390 navigate map",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "390 navigate planner",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "390 navigate gear",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "timeline affects live computed altitude",
+      "pass": true,
+      "details": "고도 18.1° -> 고도 44.8°"
+    },
+    {
+      "name": "location modal has manual coordinate entry",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "manual location recalculates from actual coords",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "moon includes phase+fraction",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "manual input updates saved coords",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "GPS coordinates used",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "no errors after GPS+manual",
+      "pass": true,
+      "details": "[]"
+    },
+    {
+      "name": "solar windows recomputed after GPS",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "360 startup no JS errors",
+      "pass": true,
+      "details": "[]"
+    },
+    {
+      "name": "360 sun/moon calculated",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "360 no horizontal overflow",
+      "pass": true,
+      "details": "[360, 360]"
+    },
+    {
+      "name": "360 4 page views",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "360 old visible logo removed",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "360 navigate map",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "360 navigate planner",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "360 navigate gear",
+      "pass": true,
+      "details": ""
+    }
+  ]
+}
