@@ -44,8 +44,16 @@ for(const [width,height] of [[360,800],[390,844],[768,1024],[1440,1080]]){
 }
 if(process.argv.includes('--maps')){
  const context=await browser.newContext({viewport:{width:390,height:844}}),page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
- const mock=`window.__maps=[];window.__markers=[];window.__shapes=[];class MapMock{constructor(el,o){this.options=o;this.handlers={};__maps.push(this);window.__map=this;}addListener(k,f){this.handlers[k]=f;return {remove:()=>delete this.handlers[k]};}panTo(p){this.center=p;}}class Shape{constructor(o){this.options=o;__shapes.push(this);}setMap(m){this.map=m;}}class Marker{constructor(o){Object.assign(this,o);this.handlers={};__markers.push(this);}addListener(k,f){this.handlers[k]=f;return {remove:()=>delete this.handlers[k]};}}window.google={maps:{Map:MapMock,Polygon:Shape,Polyline:Shape,importLibrary:async n=>n==='maps'?{Map:MapMock}:{AdvancedMarkerElement:Marker}}};window.__photographyAssistantMapsReady();`;
+ const mock=`window.__maps=[];window.__markers=[];window.__shapes=[];class MapMock{constructor(el,o){this.initialSize={width:el.clientWidth,height:el.clientHeight};this.options=o;this.handlers={};__maps.push(this);window.__map=this;}addListener(k,f){this.handlers[k]=f;return {remove:()=>delete this.handlers[k]};}panTo(p){this.center=p;}}class Shape{constructor(o){this.options=o;__shapes.push(this);}setMap(m){this.map=m;}}class Marker{constructor(o){Object.assign(this,o);this.handlers={};__markers.push(this);}addListener(k,f){this.handlers[k]=f;return {remove:()=>delete this.handlers[k]};}}window.google={maps:{Map:MapMock,Polygon:Shape,Polyline:Shape,importLibrary:async n=>n==='maps'?{Map:MapMock}:{AdvancedMarkerElement:Marker}}};window.__photographyAssistantMapsReady();`;
  await page.route('https://maps.googleapis.com/**',r=>r.fulfill({contentType:'text/javascript',body:mock}));await page.goto(base+'/map');await page.waitForSelector('.maps-ready');
+ for(const [width,height] of [[360,800],[390,844],[844,390],[1440,1080]]){
+  await page.setViewportSize({width,height});
+  const size=await page.locator('#googleMap').boundingBox();
+  check(size&&size.width>300&&size.height>=300,`${width} Google map retains visible dimensions after schematic removal`);
+  check(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),`${width} Google map no horizontal overflow`);
+ }
+ check(await page.evaluate(()=>__maps.every(m=>m.initialSize.width>300&&m.initialSize.height>=300)),'Google map container visible at initialization');
+ await page.setViewportSize({width:390,height:844});
  check(await page.evaluate(()=>__markers.length===2&&__shapes.length>=4),'Google mock markers and overlays');
  await page.getByRole('button',{name:'촬영자 옮기기'}).click();await page.evaluate(()=>__map.handlers.click({latLng:{toJSON:()=>({lat:40.7,lng:-74})}}));await page.waitForFunction(()=>document.getElementById('observerCoords').textContent.includes('40.70000'));check(true,'Google A click updates observer');
  await page.locator('#mobileNav a[href="/planner"]').click();await page.waitForSelector('#planDate');check((await page.locator('#plannerDateLabel').textContent()).includes('America/New_York'),'Google A updates timezone across route');

@@ -81,3 +81,12 @@ Final migration verification rerun: normal production build contains no mock key
 The repository had no commits. Reviewed the Next.js routes, shared state/persistence, Google Maps integration, package/configuration and existing verification records. Removed a temporary Maps configuration console log and normalized its formatting. Excluded local .env, IDE and OS files; added a blank .env.example without changing local configuration.
 
 Re-ran TypeScript, Next/TypeScript lint, formatting checks and all 41 unit tests successfully. The first formatting check found map-view.tsx formatting and passed after correction. Existing 58 UI and 8 mocked Maps check results are from the migration verification, not new browser runs on this date. No functional change requiring a new browser/build run was introduced during commit preparation. Original documents, reference screenshots and standalone prototype are included as project reference assets; generated build outputs and current QA artifacts are excluded.
+
+## Mobile Google Maps visibility fix — 2026-10-14
+
+- Reproduced the missing mobile map with a browser regression assertion: after the schematic SVG unmounted, the column flex layout's `align-items: start` left the absolutely positioned Google map inside a collapsed-width wrapper.
+- Set the map wrapper to `width: 100%; min-width: 0` and applied the existing `maps-loading` class so Google initializes in a visible, sized container.
+- Added map dimensions/overflow assertions at 360×800, 390×844, 844×390, and 1440×1080, plus constructor-time dimensions. The first new assertion failed before the fix; all 17 Maps checks passed afterward using `TEST_URL=http://127.0.0.1:8081 node qa/next-browser.mjs --maps` with dummy credentials and intercepted Google script.
+- `npm run typecheck`, `npm run lint`, `npm run format:check`: passed. `node --test reference/*.test.mjs`: 32/32 passed.
+- This validates browser layout and mocked Maps integration, not actual Google tile loading or physical mobile WebViews.
+- `npm run build` with bundled Node 24: passed (all App Router pages generated).

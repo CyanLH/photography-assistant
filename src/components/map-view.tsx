@@ -197,7 +197,7 @@ export function MapView() {
       </div>
       <div className="map-layout">
         <div
-          className={`map-wrap ${status === "ready" ? "maps-ready" : ""}`}
+          className={`map-wrap ${status === "ready" ? "maps-ready" : status === "loading" ? "maps-loading" : ""}`}
           id="mapWrap"
         >
           <div className="google-map" id="googleMap" ref={canvas} />

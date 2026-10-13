@@ -775,6 +775,8 @@ a {
 }
 .map-wrap {
   background: #e2e7db;
+  width: 100%;
+  min-width: 0;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   overflow: hidden;
